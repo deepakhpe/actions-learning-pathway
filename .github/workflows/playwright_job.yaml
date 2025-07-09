@@ -9,12 +9,6 @@ jobs:
     strategy:
       matrix:
         job_name: [playwright-test1, playwright-test2]
-        include:
-          - job_name: playwright-test1
-            test1: true
-          - job_name: playwright-test2
-            test2: true
-            
     name: ${{ matrix.job_name }}
     uses: ./.github/workflows/playwright.yml
     with:
