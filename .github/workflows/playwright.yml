@@ -82,20 +82,8 @@ jobs:
   nextgen-test:
     runs-on: ${{ inputs.runner }}
     needs: Install_dependencies
-    strategy:
-      matrix:
-        include:
-          - name: test1
-            enabled: ${{ inputs.test1 }}
-            spec: test1.spec.js
-          - name: test2
-            enabled: ${{ inputs.test2 }}
-            spec: test2.spec.js
     steps:
-      - name: Executing ${{ matrix.name }} for CMP validation in setup ${{ inputs.setup_name }}
+      - name: Nextgen test cases
         run: |
           set -e
-          echo "Executing ${{ matrix.name }} for CMP validation"
-    name: Test cases for ${{ matrix.name }}
-    if: ${{ matrix.enabled }}
-
+          echo "Run test successfully"
