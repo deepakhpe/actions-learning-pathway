@@ -14,7 +14,7 @@ runs:
   steps:
     - name: Output a message
       shell: bash
-      run: echo ${{inputs.input1}} ${{inputs.input2}} ${{ secrets.MY_SECRET }}
+      run: echo ${{inputs.input1}} ${{inputs.input2}} ${{ env.ENV_PATH }}
 
     - name: Another command
       shell: bash

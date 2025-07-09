@@ -1,6 +1,9 @@
 # .github/workflows/main.yml
 name: Composite Action Example
 
+env:
+  ENV_PATH: $GITHUB_WORKSPACE/playwright-automation
+  
 on: push
 
 jobs:
@@ -14,5 +17,5 @@ jobs:
         with:
           input1: 'Hello'
           input2: 'World'
-        secrets:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
+        # secrets:
+        #   MY_TEST_TOKEN: ${{ secrets.MY_TEST_TOKEN }}
