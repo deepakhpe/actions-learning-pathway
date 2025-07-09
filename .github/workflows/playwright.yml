@@ -97,5 +97,5 @@ jobs:
           set -e
           echo "Executing ${{ matrix.name }} for CMP validation"
     name: Test cases for ${{ matrix.name }}
-    if: matrix.enabled
+    if: ${{ matrix.enabled }}
 
