@@ -1,0 +1,25 @@
+name: playwright test job
+run-name: playwright test job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  playwright-tests:
+    strategy:
+      matrix:
+        job_name: [playwright-test1, playwright-test2]
+        include:
+          - job_name: playwright-test1
+            test1: true
+          - job_name: playwright-test2
+            test2: true
+            
+    name: ${{ matrix.job_name }}
+    uses: ./.github/workflows/playwright.yml
+    with:
+      runner: ${{ inputs.runner || 'ubuntu-latest' }}
+      setup_name: ${{ inputs.setup_name || 'Integ3' }}
+      type: project1
+      testrail_run_id: ${{ inputs.testrail_run_id || 1234 }}
+    secrets: inherit
