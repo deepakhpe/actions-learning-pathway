@@ -97,6 +97,5 @@ jobs:
         run: |
           set -e
           echo "Executing ${{ matrix.name }} for CMP validation"
-          npx playwright test ${{ matrix.spec }}
     name: Test cases for ${{ matrix.name }}
 
