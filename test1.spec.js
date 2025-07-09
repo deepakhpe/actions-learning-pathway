@@ -1,1 +1,1 @@
-echo 'Hello from test file1'
+console.log('Hello from test file1');
