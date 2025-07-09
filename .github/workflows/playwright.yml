@@ -77,7 +77,7 @@ jobs:
       - name: Install dependencies
         run: |
           set -e
-          npm ci
+          npm build
           
   nextgen-test:
     runs-on: ${{ inputs.runner }}
