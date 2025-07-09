@@ -1,0 +1,15 @@
+# .github/workflows/main.yml
+name: Composite Action Example
+
+on: push
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run my composite action
+        uses: ./.github/actions/my-action
+        with:
+          input1: 'Hello'
+          input2: 'World'
