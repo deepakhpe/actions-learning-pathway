@@ -1,0 +1,100 @@
+name: Executing Playwright test
+run-name: Running Playwright test for ${{ inputs.setup_name }} setup
+on: 
+  workflow_call:
+    inputs:
+      runner:
+        description: 'runner label'
+        required: true
+        type: string
+
+      setup_name:
+        description: 'setup name'
+        type: string
+        required: true
+      
+      type:
+        description: 'select type'
+        required: true
+        type: string
+       
+      testrail_run_id:
+        description: 'provide testrail run id'
+        type: string
+        required: true
+      
+      test1:
+        description: 'True for test1'
+        type: boolean
+        default: false
+        required: false
+
+      test2:
+        description: 'True test2'
+        type: boolean
+        default: false
+        required: false
+  
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: 'runner label'
+        required: true
+        type: string
+
+      setup_name:
+        description: 'setup name'
+        type: string
+        required: true
+      
+      type:
+        description: 'select type'
+        required: true
+        type: string
+       
+      testrail_run_id:
+        description: 'provide testrail run id'
+        type: string
+        required: true
+      
+      test1:
+        description: 'True for test1'
+        type: boolean
+        default: false
+        required: false
+
+      test2:
+        description: 'True test2'
+        type: boolean
+        default: false
+        required: false
+  
+jobs:
+  Install_dependencies:
+    timeout-minutes: 60
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Install dependencies
+        run: |
+          set -e
+          npm ci
+          
+  nextgen-test:
+    runs-on: ${{ inputs.runner }}
+    needs: Install_dependencies
+    strategy:
+      matrix:
+        include:
+          - name: test1
+            enabled: ${{ inputs.test1 }}
+            spec: test1.spec.js
+          - name: test2
+            enabled: ${{ inputs.test2 }}
+            spec: test2.spec.js
+    steps:
+      - name: Executing ${{ matrix.name }} for CMP validation in setup ${{ inputs.setup_name }}
+        if: matrix.enabled
+        run: |
+          set -e
+          echo "Executing ${{ matrix.name }} for CMP validation"
+          npx playwright test ${{ matrix.spec }}
