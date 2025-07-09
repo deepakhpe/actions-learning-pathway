@@ -93,9 +93,9 @@ jobs:
             spec: test2.spec.js
     steps:
       - name: Executing ${{ matrix.name }} for CMP validation in setup ${{ inputs.setup_name }}
-        if: matrix.enabled
         run: |
           set -e
           echo "Executing ${{ matrix.name }} for CMP validation"
     name: Test cases for ${{ matrix.name }}
+    if: matrix.enabled
 
