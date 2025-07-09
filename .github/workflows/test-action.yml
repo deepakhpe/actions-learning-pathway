@@ -9,7 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run my composite action
-        uses: ./.github/actions/my-action
+        uses: deepakhpe/actions-learning-pathway/.github/actions/my-composite-action@main
+
         with:
           input1: 'Hello'
           input2: 'World'
