@@ -9,12 +9,18 @@ inputs:
     description: 'Second input'
     required: true
     default: 'Default value 2'
+  my-test-token:
+    description: 'A test token'
+    required: false
+    default: ''
+
+  
 runs:
   using: 'composite'
   steps:
     - name: Output a message
       shell: bash
-      run: echo ${{inputs.input1}} ${{inputs.input2}} ${{ env.ENV_PATH }}
+      run: echo ${{inputs.input1}} ${{inputs.input2}} ${{ env.ENV_PATH }} ${{ inputs.my-test-token }}
 
     - name: Another command
       shell: bash

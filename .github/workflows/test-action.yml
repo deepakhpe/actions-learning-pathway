@@ -17,5 +17,6 @@ jobs:
         with:
           input1: 'Hello'
           input2: 'World'
+          my-test-token: ${{ secrets.MY_TEST_TOKEN }}
         # secrets:
         #   MY_TEST_TOKEN: ${{ secrets.MY_TEST_TOKEN }}
